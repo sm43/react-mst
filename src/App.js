@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { UserList } from "./UserList.js";
+import { UserFilter } from "./UserFilter.js";
+import { UserForm } from "./UserForm.js";
+import { StoreProvider } from "./store/store";
+import SplitPane from "react-split-pane";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreProvider>
+      <main>
+        <SplitPane split="vertical" minSize={500}>
+          <div>
+            <UserForm />
+          </div>
+          <div>
+            <UserFilter />
+            <UserList />
+          </div>
+        </SplitPane>
+      </main>
+    </StoreProvider>
   );
 }
 
