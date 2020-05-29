@@ -1,9 +1,7 @@
 import React from "react";
-import "./App.css";
-import { StoreContext } from "./store/store";
+import { API_URL } from "./config.js";
 
 export const UserForm = () => {
-  const store = React.useContext(StoreContext);
   const [user, setUser] = React.useState({
     name: "",
     age: "",
@@ -21,21 +19,40 @@ export const UserForm = () => {
       [e.target.name]: parseInt(e.target.value),
     });
   };
+  function addUser() {
+    fetch(`${API_URL}/user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ user: user }),
+    }).then(function (response) {
+      if (!response.ok) {
+        alert("Failed to add user !!");
+        throw new Error("Failed to add user - ", response);
+      }
+    });
+  }
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (user.name === "" || user.age === "" || user.class === "") {
-            alert("Empty field..!! ", user.age);
-          } else if (!/^[a-zA-Z]+$/.test(user.name)) {
-            alert("Invalid name.");
-          } else if (isNaN(user.age)) {
-            alert("Age is not a number.");
+          if (localStorage.getItem("token") !== "") {
+            if (user.name === "" || user.age === "" || user.class === "") {
+              alert("Empty field..!! ");
+            } else if (!/^[a-zA-Z]+$/.test(user.name)) {
+              alert("Invalid name.");
+            } else if (isNaN(user.age)) {
+              alert("Age is not a number.");
+            } else {
+              addUser();
+              setUser({ id: "", name: "", age: "", class: "" });
+            }
           } else {
-            store.add(user);
-            setUser({ name: "", age: "", class: "" });
+            alert("Please login first...!!");
           }
         }}
       >

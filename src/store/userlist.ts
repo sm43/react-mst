@@ -1,7 +1,9 @@
 import { types, Instance } from "mobx-state-tree";
 import { values } from "mobx";
+import { API_URL } from "./../config.js";
 
 export const User = types.model({
+  id: types.optional(types.integer, 0),
   name: types.optional(types.string, ""),
   age: types.optional(types.integer, 0),
   class: types.optional(types.string, ""),
@@ -22,6 +24,31 @@ export const Store = types
     },
   }))
   .actions((self) => ({
+    fetchData() {
+      self.users.clear();
+      fetch(`${API_URL}/users`)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("failed to fetch resources");
+          }
+          return response.json();
+        })
+        .then((res) => {
+          for (var i = 0; i < res.length; i++) {
+            var obj = res[i];
+            this.add({
+              id: obj.id,
+              name: obj.name,
+              age: obj.age,
+              class: obj.class,
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          return;
+        });
+    },
     add(item: UserItem) {
       self.users.push(item);
     },

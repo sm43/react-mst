@@ -1,32 +1,37 @@
 import React from "react";
-import "./App.css";
 import GitHubLogin from "react-github-login";
+import { API_URL, GH_CLIENT_ID } from "./config.js";
 
 const onSuccess = (response) => {
   const authorizeToken = response.code.toString();
-  console.log("login.................", authorizeToken);
-  var x = document.getElementById("loginDiv");
-  x.style.display = "none";
-  x = document.getElementById("logoutDiv");
-  x.style.display = "block";
-  fetch(`http://localhost:8000/oauth/redirect`, {
-    mode: "cors",
+  fetch(`${API_URL}/oauth/redirect`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ token: authorizeToken }),
   })
-    .then((res) => res.json())
+    .then(function (response) {
+      if (!response.ok) {
+        alert("Login failed. Try again !!");
+        throw new Error("Login failed - ", response);
+      }
+      return response.json();
+    })
     .then((response) => {
-      console.log("ans...", response);
-      //localStorage.setItem("token", response.data.token);
-      //   checkAuthentication();
-      //   history.push("/");
-      //   window.location.reload();
+      localStorage.setItem("token", response);
+      localStorage.setItem("Authenticated", true);
+      var x = document.getElementById("loginDiv");
+      x.style.display = "none";
+      x = document.getElementById("logoutDiv");
+      x.style.display = "block";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
     });
 };
 const onFailure = (error) => {
+  alert("Login failed !! Try again !!");
   console.log(error);
 };
 export const NavBar = () => {
@@ -36,7 +41,7 @@ export const NavBar = () => {
         <br />
         <div id="loginDiv">
           <GitHubLogin
-            clientId="be6a068ddd512d05a292"
+            clientId={GH_CLIENT_ID}
             redirectUri=""
             onSuccess={onSuccess}
             onFailure={onFailure}
