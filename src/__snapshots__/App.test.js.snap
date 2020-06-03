@@ -1,0 +1,498 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot before and after loading 1`] = `
+Array [
+  <header>
+    <div>
+      <nav>
+        <br />
+        <div
+          id="loginDiv"
+        >
+          <button
+            onClick={[Function]}
+          >
+            Sign in with GitHub
+          </button>
+        </div>
+         
+        <div
+          id="logoutDiv"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <button
+            id="logout"
+            name="logout"
+            onClick={[Function]}
+            type="submit"
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>,
+  <main>
+    <div
+      className="SplitPane  vertical "
+      style={
+        Object {
+          "MozUserSelect": "text",
+          "WebkitUserSelect": "text",
+          "display": "flex",
+          "flex": 1,
+          "flexDirection": "row",
+          "height": "100%",
+          "left": 0,
+          "msUserSelect": "text",
+          "outline": "none",
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "userSelect": "text",
+        }
+      }
+    >
+      <div
+        className="Pane vertical Pane1  "
+        style={
+          Object {
+            "flex": "none",
+            "outline": "none",
+            "position": "relative",
+            "width": 500,
+          }
+        }
+      >
+        <div>
+          <div>
+            <form
+              onSubmit={[Function]}
+            >
+              <h3>
+                Insert Data 
+              </h3>
+              <label>
+                Name:  
+                <input
+                  name="name"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </label>
+              <br />
+              <br />
+              <label>
+                Age:  
+                <input
+                  name="age"
+                  onChange={[Function]}
+                  type="number"
+                  value=""
+                />
+                <br />
+                <br />
+              </label>
+               
+              <div
+                onChange={[Function]}
+              >
+                Class:  
+                <input
+                  name="class"
+                  type="radio"
+                  value="FY"
+                />
+                 FY
+                <input
+                  name="class"
+                  type="radio"
+                  value="SY"
+                />
+                 SY
+                <input
+                  name="class"
+                  type="radio"
+                  value="TY"
+                />
+                 TY
+              </div>
+              <br />
+              <button
+                type="submit"
+              >
+                Add User
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <span
+        className="Resizer vertical "
+        onClick={[Function]}
+        onDoubleClick={[Function]}
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        role="presentation"
+        style={Object {}}
+      />
+      <div
+        className="Pane vertical Pane2  "
+        style={
+          Object {
+            "flex": 1,
+            "outline": "none",
+            "position": "relative",
+          }
+        }
+      >
+        <div>
+          <div>
+            <h3>
+              Filter: 
+            </h3>
+            <div
+              onChange={[Function]}
+            >
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="FY"
+              />
+               FY
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="SY"
+              />
+               SY
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="TY"
+              />
+               TY
+            </div>
+            <div
+              onChange={[Function]}
+            >
+              <h3>
+                Sort By:
+              </h3>
+              <input
+                name="options"
+                type="radio"
+                value="Name"
+              />
+               Name
+              <input
+                name="options"
+                type="radio"
+                value="Age"
+              />
+               Age
+              <input
+                defaultChecked={true}
+                name="options"
+                type="radio"
+                value="No"
+              />
+               No Sort
+            </div>
+          </div>
+          <div>
+            <h2>
+              No. of Users: 
+              0
+               
+            </h2>
+            <ul />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>,
+]
+`;
+
+exports[`matches snapshot before and after loading 2`] = `
+Array [
+  <header>
+    <div>
+      <nav>
+        <br />
+        <div
+          id="loginDiv"
+        >
+          <button
+            onClick={[Function]}
+          >
+            Sign in with GitHub
+          </button>
+        </div>
+         
+        <div
+          id="logoutDiv"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <button
+            id="logout"
+            name="logout"
+            onClick={[Function]}
+            type="submit"
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>,
+  <main>
+    <div
+      className="SplitPane  vertical "
+      style={
+        Object {
+          "MozUserSelect": "text",
+          "WebkitUserSelect": "text",
+          "display": "flex",
+          "flex": 1,
+          "flexDirection": "row",
+          "height": "100%",
+          "left": 0,
+          "msUserSelect": "text",
+          "outline": "none",
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "userSelect": "text",
+        }
+      }
+    >
+      <div
+        className="Pane vertical Pane1  "
+        style={
+          Object {
+            "flex": "none",
+            "outline": "none",
+            "position": "relative",
+            "width": 500,
+          }
+        }
+      >
+        <div>
+          <div>
+            <form
+              onSubmit={[Function]}
+            >
+              <h3>
+                Insert Data 
+              </h3>
+              <label>
+                Name:  
+                <input
+                  name="name"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </label>
+              <br />
+              <br />
+              <label>
+                Age:  
+                <input
+                  name="age"
+                  onChange={[Function]}
+                  type="number"
+                  value=""
+                />
+                <br />
+                <br />
+              </label>
+               
+              <div
+                onChange={[Function]}
+              >
+                Class:  
+                <input
+                  name="class"
+                  type="radio"
+                  value="FY"
+                />
+                 FY
+                <input
+                  name="class"
+                  type="radio"
+                  value="SY"
+                />
+                 SY
+                <input
+                  name="class"
+                  type="radio"
+                  value="TY"
+                />
+                 TY
+              </div>
+              <br />
+              <button
+                type="submit"
+              >
+                Add User
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <span
+        className="Resizer vertical "
+        onClick={[Function]}
+        onDoubleClick={[Function]}
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        role="presentation"
+        style={Object {}}
+      />
+      <div
+        className="Pane vertical Pane2  "
+        style={
+          Object {
+            "flex": 1,
+            "outline": "none",
+            "position": "relative",
+          }
+        }
+      >
+        <div>
+          <div>
+            <h3>
+              Filter: 
+            </h3>
+            <div
+              onChange={[Function]}
+            >
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="FY"
+              />
+               FY
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="SY"
+              />
+               SY
+              <input
+                defaultChecked={false}
+                type="checkbox"
+                value="TY"
+              />
+               TY
+            </div>
+            <div
+              onChange={[Function]}
+            >
+              <h3>
+                Sort By:
+              </h3>
+              <input
+                name="options"
+                type="radio"
+                value="Name"
+              />
+               Name
+              <input
+                name="options"
+                type="radio"
+                value="Age"
+              />
+               Age
+              <input
+                defaultChecked={true}
+                name="options"
+                type="radio"
+                value="No"
+              />
+               No Sort
+            </div>
+          </div>
+          <div>
+            <h2>
+              No. of Users: 
+              6
+               
+            </h2>
+            <ul>
+              <li>
+                Name: 
+                rachel
+                   Age: 
+                18
+                   Class:
+                 
+                FY
+              </li>
+              <li>
+                Name: 
+                monica
+                   Age: 
+                21
+                   Class:
+                 
+                SY
+              </li>
+              <li>
+                Name: 
+                joey
+                   Age: 
+                27
+                   Class:
+                 
+                FY
+              </li>
+              <li>
+                Name: 
+                phoebe
+                   Age: 
+                22
+                   Class:
+                 
+                TY
+              </li>
+              <li>
+                Name: 
+                ross
+                   Age: 
+                17
+                   Class:
+                 
+                FY
+              </li>
+              <li>
+                Name: 
+                chandler
+                   Age: 
+                28
+                   Class:
+                 
+                SY
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>,
+]
+`;
