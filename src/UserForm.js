@@ -1,6 +1,7 @@
 import React from "react";
 import { API_URL } from "./config.js";
 
+
 export const UserForm = () => {
   const [user, setUser] = React.useState({
     name: "",
@@ -27,12 +28,17 @@ export const UserForm = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({ user: user }),
-    }).then(function (response) {
-      if (!response.ok) {
-        alert("Failed to add user !!");
-        throw new Error("Failed to add user - ", response);
-      }
-    });
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          alert("Failed to add user !!");
+          throw new Error("Failed to add user - ", response);
+        }
+        alert('User added successfully')
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
@@ -40,6 +46,7 @@ export const UserForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          console.log(localStorage.getItem("token"));
           if (localStorage.getItem("token") !== "") {
             if (user.name === "" || user.age === "" || user.class === "") {
               alert("Empty field..!! ");
@@ -65,6 +72,12 @@ export const UserForm = () => {
             value={user.name}
             onChange={updateUser}
           />
+          {/* <TextInput
+            value={user.name}
+            type="text"
+            onChange={updateUser}
+            aria-label="text input example"
+          /> */}
         </label>
         <br />
         <br />

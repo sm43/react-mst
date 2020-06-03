@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can add user in a store 1`] = `
+Object {
+  "filter": Array [],
+  "isLoading": false,
+  "sort": "",
+  "users": Array [
+    Object {
+      "age": 18,
+      "class": "FY",
+      "id": 11,
+      "name": "rachel",
+    },
+    Object {
+      "age": 21,
+      "class": "SY",
+      "id": 12,
+      "name": "monica",
+    },
+    Object {
+      "age": 27,
+      "class": "FY",
+      "id": 13,
+      "name": "joey",
+    },
+    Object {
+      "age": 22,
+      "class": "TY",
+      "id": 14,
+      "name": "phoebe",
+    },
+    Object {
+      "age": 17,
+      "class": "FY",
+      "id": 15,
+      "name": "ross",
+    },
+    Object {
+      "age": 28,
+      "class": "SY",
+      "id": 16,
+      "name": "chandler",
+    },
+    Object {
+      "age": 43,
+      "class": "SY",
+      "id": 43,
+      "name": "test",
+    },
+  ],
+}
+`;
+
+exports[`can add user in a store 2`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/users/6",
+    "value": Object {
+      "age": 43,
+      "class": "SY",
+      "id": 43,
+      "name": "test",
+    },
+  },
+]
+`;
+
+exports[`can get users filtered by class 1`] = `
+Object {
+  "filter": Array [
+    "FY",
+  ],
+  "isLoading": false,
+  "sort": "",
+  "users": Array [
+    Object {
+      "age": 18,
+      "class": "FY",
+      "id": 11,
+      "name": "rachel",
+    },
+    Object {
+      "age": 21,
+      "class": "SY",
+      "id": 12,
+      "name": "monica",
+    },
+    Object {
+      "age": 27,
+      "class": "FY",
+      "id": 13,
+      "name": "joey",
+    },
+    Object {
+      "age": 22,
+      "class": "TY",
+      "id": 14,
+      "name": "phoebe",
+    },
+    Object {
+      "age": 17,
+      "class": "FY",
+      "id": 15,
+      "name": "ross",
+    },
+    Object {
+      "age": 28,
+      "class": "SY",
+      "id": 16,
+      "name": "chandler",
+    },
+  ],
+}
+`;
+
+exports[`can get users filtered by class 2`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/filter/0",
+    "value": "FY",
+  },
+]
+`;
+
+exports[`can get users filtered by class and sorted 1`] = `
+Object {
+  "filter": Array [
+    "FY",
+  ],
+  "isLoading": false,
+  "sort": "name",
+  "users": Array [
+    Object {
+      "age": 18,
+      "class": "FY",
+      "id": 11,
+      "name": "rachel",
+    },
+    Object {
+      "age": 21,
+      "class": "SY",
+      "id": 12,
+      "name": "monica",
+    },
+    Object {
+      "age": 27,
+      "class": "FY",
+      "id": 13,
+      "name": "joey",
+    },
+    Object {
+      "age": 22,
+      "class": "TY",
+      "id": 14,
+      "name": "phoebe",
+    },
+    Object {
+      "age": 17,
+      "class": "FY",
+      "id": 15,
+      "name": "ross",
+    },
+    Object {
+      "age": 28,
+      "class": "SY",
+      "id": 16,
+      "name": "chandler",
+    },
+  ],
+}
+`;
+
+exports[`can get users filtered by class and sorted 2`] = `
+Array [
+  Object {
+    "op": "replace",
+    "path": "/sort",
+    "value": "name",
+  },
+  Object {
+    "op": "add",
+    "path": "/filter/0",
+    "value": "FY",
+  },
+]
+`;
+
+exports[`can get users sorted 1`] = `
+Object {
+  "filter": Array [],
+  "isLoading": false,
+  "sort": "name",
+  "users": Array [
+    Object {
+      "age": 18,
+      "class": "FY",
+      "id": 11,
+      "name": "rachel",
+    },
+    Object {
+      "age": 21,
+      "class": "SY",
+      "id": 12,
+      "name": "monica",
+    },
+    Object {
+      "age": 27,
+      "class": "FY",
+      "id": 13,
+      "name": "joey",
+    },
+    Object {
+      "age": 22,
+      "class": "TY",
+      "id": 14,
+      "name": "phoebe",
+    },
+    Object {
+      "age": 17,
+      "class": "FY",
+      "id": 15,
+      "name": "ross",
+    },
+    Object {
+      "age": 28,
+      "class": "SY",
+      "id": 16,
+      "name": "chandler",
+    },
+  ],
+}
+`;
+
+exports[`can get users sorted 2`] = `
+Array [
+  Object {
+    "op": "replace",
+    "path": "/sort",
+    "value": "name",
+  },
+]
+`;

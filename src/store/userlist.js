@@ -1,9 +1,9 @@
-import { types, Instance } from "mobx-state-tree";
+import { types, getEnv, flow } from "mobx-state-tree";
 import { values } from "mobx";
 import { API_URL } from "./../config.js";
 
 export const User = types.model({
-  id: types.optional(types.integer, 0),
+  id: types.integer,
   name: types.optional(types.string, ""),
   age: types.optional(types.integer, 0),
   class: types.optional(types.string, ""),
@@ -14,6 +14,7 @@ export const Store = types
     users: types.array(User),
     filter: types.optional(types.array(types.string), []),
     sort: types.optional(types.string, ""),
+    isLoading: true,
   })
   .views((self) => ({
     get count() {
@@ -22,8 +23,15 @@ export const Store = types
     get userList() {
       return filterAndSortUsers(values(self.users), self.filter, self.sort);
     },
+    get fetch() {
+      return getEnv(self).fetch;
+    },
   }))
   .actions((self) => ({
+    afterCreate() {
+      self.users.clear();
+      loadUsers(self);
+    },
     fetchData() {
       self.users.clear();
       fetch(`${API_URL}/users`)
@@ -49,30 +57,43 @@ export const Store = types
           return;
         });
     },
-    add(item: UserItem) {
+    add(item) {
       self.users.push(item);
     },
-    setSort(sort: string) {
+    setSort(sort) {
       self.sort = sort;
     },
-    setFilter(filter: any) {
+    setFilter(filter) {
       self.filter = filter;
+    },
+    setStatus(status) {
+      self.isLoading = status;
     },
   }));
 
-export interface UserItem extends Instance<typeof User> {}
+const loadUsers = flow(function* loadUsers(self) {
+  try {
+    const json = yield self.fetch("./users.json");
+    json.forEach((userJson) => {
+      self.add(userJson);
+    });
+    self.setStatus(false)
+  } catch (err) {
+    console.error("Failed to load users ", err);
+  }
+});
 
-function filterAndSortUsers(users: any, filter: any, sort: any) {
+function filterAndSortUsers(users, filter, sort) {
   if (filter.length === 0 && sort === "") {
     return users;
   }
   if (filter.length === 0) {
     if (sort === "name") {
-      return users.sort((a: UserItem, b: UserItem) =>
+      return users.sort((a, b) =>
         a.name > b.name ? 1 : a.name === b.name ? 0 : -1
       );
     } else if (sort === "age") {
-      return users.sort((a: UserItem, b: UserItem) =>
+      return users.sort((a, b) =>
         a.age > b.age ? 1 : a.age === b.age ? 0 : -1
       );
     } else {
@@ -81,17 +102,13 @@ function filterAndSortUsers(users: any, filter: any, sort: any) {
   }
   if (sort === "name") {
     return users
-      .filter((u: UserItem) => filter.includes(u.class))
-      .sort((a: UserItem, b: UserItem) =>
-        a.name > b.name ? 1 : a.name === b.name ? 0 : -1
-      );
+      .filter((u) => filter.includes(u.class))
+      .sort((a, b) => (a.name > b.name ? 1 : a.name === b.name ? 0 : -1));
   } else if (sort === "age") {
     return users
-      .filter((u: UserItem) => filter.includes(u.class))
-      .sort((a: UserItem, b: UserItem) =>
-        a.age > b.age ? 1 : a.age === b.age ? 0 : -1
-      );
+      .filter((u) => filter.includes(u.class))
+      .sort((a, b) => (a.age > b.age ? 1 : a.age === b.age ? 0 : -1));
   } else {
-    return users.filter((u: UserItem) => filter.includes(u.class));
+    return users.filter((u) => filter.includes(u.class));
   }
 }

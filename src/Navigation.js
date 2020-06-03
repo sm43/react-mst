@@ -20,7 +20,6 @@ const onSuccess = (response) => {
     })
     .then((response) => {
       localStorage.setItem("token", response);
-      localStorage.setItem("Authenticated", true);
       var x = document.getElementById("loginDiv");
       x.style.display = "none";
       x = document.getElementById("logoutDiv");
@@ -33,6 +32,13 @@ const onSuccess = (response) => {
 const onFailure = (error) => {
   alert("Login failed !! Try again !!");
   console.log(error);
+};
+const logout = () => {
+  var x = document.getElementById("loginDiv");
+  x.style.display = "block";
+  x = document.getElementById("logoutDiv");
+  x.style.display = "none";
+  localStorage.removeItem("token");
 };
 export const NavBar = () => {
   return (
@@ -50,7 +56,7 @@ export const NavBar = () => {
         </div>
         &emsp;
         <div id="logoutDiv" style={{ display: "none" }}>
-          <button id="logout" name="logout" type="submit">
+          <button id="logout" name="logout" type="submit" onClick={logout}>
             Logout
           </button>
         </div>
