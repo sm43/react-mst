@@ -27,9 +27,9 @@ export const UserFilter = () => {
           }
         }}
       >
-        <input type="checkbox" defaultChecked={false} value="FY" /> FY
-        <input type="checkbox" defaultChecked={false} value="SY" /> SY
-        <input type="checkbox" defaultChecked={false} value="TY" /> TY
+        <input type="checkbox" id="c1" defaultChecked={false} value="FY" /> FY
+        <input type="checkbox" id="c2" defaultChecked={false} value="SY" /> SY
+        <input type="checkbox" id="c3" defaultChecked={false} value="TY" /> TY
       </div>
       <div
         onChange={(e) => {

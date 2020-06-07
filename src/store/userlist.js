@@ -32,31 +32,6 @@ export const Store = types
       self.users.clear();
       loadUsers(self);
     },
-    fetchData() {
-      self.users.clear();
-      fetch(`${API_URL}/users`)
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("failed to fetch resources");
-          }
-          return response.json();
-        })
-        .then((res) => {
-          for (var i = 0; i < res.length; i++) {
-            var obj = res[i];
-            this.add({
-              id: obj.id,
-              name: obj.name,
-              age: obj.age,
-              class: obj.class,
-            });
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          return;
-        });
-    },
     add(item) {
       self.users.push(item);
     },

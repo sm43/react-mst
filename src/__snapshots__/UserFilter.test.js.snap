@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserFilter /> should render correctly 1`] = `
+<div>
+  <h3>
+    Filter: 
+  </h3>
+  <div
+    onChange={[Function]}
+  >
+    <input
+      defaultChecked={false}
+      id="c1"
+      type="checkbox"
+      value="FY"
+    />
+     FY
+    <input
+      defaultChecked={false}
+      id="c2"
+      type="checkbox"
+      value="SY"
+    />
+     SY
+    <input
+      defaultChecked={false}
+      id="c3"
+      type="checkbox"
+      value="TY"
+    />
+     TY
+  </div>
+  <div
+    onChange={[Function]}
+  >
+    <h3>
+      Sort By:
+    </h3>
+    <input
+      name="options"
+      type="radio"
+      value="Name"
+    />
+     Name
+    <input
+      name="options"
+      type="radio"
+      value="Age"
+    />
+     Age
+    <input
+      defaultChecked={true}
+      name="options"
+      type="radio"
+      value="No"
+    />
+     No Sort
+  </div>
+</div>
+`;
+
+exports[`should render banner text correctly with given strings 1`] = `ReactWrapper {}`;

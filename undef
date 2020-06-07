@@ -1,0 +1,75 @@
+      <Form onSubmit={(e) => {
+          e.preventDefault();
+          console.log(localStorage.getItem("token"));
+          if (localStorage.getItem("token") !== null) {
+            if (user.name === "" || user.age === "" || user.class === "") {
+              alert("Empty field..!! ");
+            } else if (!/^[a-zA-Z]+$/.test(user.name)) {
+              alert("Invalid name.");
+            } else if (isNaN(user.age)) {
+              alert("Age is not a number.");
+            } else {
+              addUser();
+              setUser({ id: "", name: "", age: "", class: "" });
+            }
+          } else {
+            alert("Please login first...!!");
+          }
+        }}>
+        <FormGroup label="Name" isRequired fieldId="simple-form-name">
+          <TextInput
+            isRequired
+            type="text"
+            id="name"
+            name="name"
+            aria-describedby="simple-form-name-helper"
+            value={user.name}
+            onChange={updateUser}
+            style={{ border: "1px solid #ff0000" }}
+            onKeyPress=
+              {(e) =>
+                (e.key === 'name' ? updateUser() : null)}
+          />
+        </FormGroup>
+        <FormGroup label="Age" isRequired fieldId="simple-form-number">
+          <TextInput
+            isRequired
+            type="number"
+            id="age"
+            name="age"
+            value={user.age}
+            onChange={updateUserAge}
+            style={{ border: "1px solid #ff0000" }}
+          />
+        </FormGroup>
+        <div
+          onChange={(e) => {
+            if (e.target.value !== "") {
+              updateUser(e);
+            }
+          }}
+        >
+          <Radio name="class" id="FY" label="FY" value="FY" />
+          <Radio name="class" id="SY" label="SY" value="SY" />
+          <Radio name="class" id="TY" label="TY" value="TY" />
+        </div>
+
+        <ActionGroup>
+          <Button variant="primary" type="submit" style={{ border: "1px solid #ff0000" }}>
+            Submit form
+          </Button>
+        </ActionGroup>
+      </Form>
+
+
+ {
+        ((userArr = store.userList),
+        userArr.map((user) => rows.push([user.name, user.age, user.class])))
+      }
+      <Table caption="Row Click Handler Table" cells={columns} rows={rows}>
+        <TableHeader />
+        <TableBody />
+      </Table>
+
+        const columns = ["Name", "Age", "Class"];
+  const rows = [];
