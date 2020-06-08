@@ -3,9 +3,8 @@ import renderer from "react-test-renderer";
 import fs from "fs";
 import { Store } from "./store/userlist";
 import { StoreContext } from "./store/store";
-import "./App.css";
 import { UserFilter } from "./UserFilter.js";
-import { mount, shallow } from "enzyme";
+import { mount } from "enzyme";
 
 const userFetcher = () =>
   Promise.resolve(JSON.parse(fs.readFileSync("./src/store/users.json")));
@@ -26,38 +25,32 @@ describe("<UserFilter />", () => {
   });
 });
 
-it("should render banner text correctly with given strings", () => {
-  // const component = shallow(
-  //   <StoreProvider>
-  //     <UserFilter />
-  //   </StoreProvider>
-  // );
+it("should filter by class 'FY'", () => {
   const component = mount(
     <StoreProvider>
       <UserFilter />
     </StoreProvider>
   );
-
-  // component.find('input[name="options"]').at(1).simulate("click");
-  // var checkbox = () => component.find('input[type="radio"]').at(1);
   component
-    .find('input[type="checkbox"]')
-    .at(0)
-    .simulate("change", { target: { checked: true } });
-
-  expect(component).toMatchSnapshot();
-  console.log(store.count);
+    .find("#check1")
+    .simulate("click", { target: { checked: true, value: "FY" } });
   const list = store.userList;
-  console.log(list[0].name);
+  expect(list.length).toBe(3);
+  component
+    .find("#check1")
+    .simulate("click", { target: { checked: false, value: "FY" } });
+  component.unmount();
 });
 
-// const component = mount(
-//     <StoreProvider>
-//       <UserFilter />
-//     </StoreProvider>
-//   );
-//   expect(component).toMatchSnapshot();
-//   // component.find("checkbox#c1").simulate('change', {target: {checked: true}});
-//   var checkbox = component.find("#checkbox").eq('c1');
-//   checkbox.simulate("change", { target: { checked: true } });
-//   component.unmount();
+it("should sort by name", () => {
+  const component = mount(
+    <StoreProvider>
+      <UserFilter />
+    </StoreProvider>
+  );
+  component.find("#r1").simulate("click");
+  const list = store.userList;
+  expect(list[0].name).toBe("chandler");
+  component.find("#r1").simulate("click");
+  component.unmount();
+});

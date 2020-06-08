@@ -5,58 +5,67 @@ exports[`<UserFilter /> should render correctly 1`] = `
   <h3>
     Filter: 
   </h3>
-  <div
-    onChange={[Function]}
-  >
+  <div>
     <input
       defaultChecked={false}
-      id="c1"
+      id="check1"
+      onClick={[Function]}
       type="checkbox"
       value="FY"
     />
-     FY
+     
+    FY
     <input
       defaultChecked={false}
-      id="c2"
+      id="check2"
+      onClick={[Function]}
       type="checkbox"
       value="SY"
     />
-     SY
+     
+    SY
     <input
       defaultChecked={false}
-      id="c3"
+      id="check2"
+      onClick={[Function]}
       type="checkbox"
       value="TY"
     />
-     TY
+     
+    TY
   </div>
-  <div
-    onChange={[Function]}
-  >
+  <div>
     <h3>
       Sort By:
     </h3>
     <input
+      id="r1"
       name="options"
+      onClick={[Function]}
       type="radio"
       value="Name"
     />
-     Name
+     
+    Name
     <input
+      id="r2"
       name="options"
+      onClick={[Function]}
       type="radio"
       value="Age"
     />
-     Age
+     
+    Age
     <input
       defaultChecked={true}
+      id="r3"
       name="options"
+      onClick={[Function]}
       type="radio"
       value="No"
     />
-     No Sort
+     
+    No Sort
   </div>
 </div>
 `;
-
-exports[`should render banner text correctly with given strings 1`] = `ReactWrapper {}`;

@@ -1,6 +1,5 @@
 import { types, getEnv, flow } from "mobx-state-tree";
 import { values } from "mobx";
-import { API_URL } from "./../config.js";
 
 export const User = types.model({
   id: types.integer,
